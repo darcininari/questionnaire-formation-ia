@@ -139,6 +139,7 @@
         }
 
         input[type="text"],
+        input[type="email"],
         textarea {
             width: 100%;
             padding: 11px 14px;
@@ -151,6 +152,7 @@
         }
 
         input[type="text"]:focus,
+        input[type="email"]:focus,
         textarea:focus {
             outline: none;
             border-color: #0055A4;
@@ -313,6 +315,7 @@
                 page-break-inside: avoid;
             }
             input[type="text"],
+            input[type="email"],
             textarea {
                 border: 1px solid #ccc;
                 padding: 9px 11px;
@@ -377,14 +380,14 @@
 
             <div class="info-box">
                 <p><strong>Client :</strong> Maurel & Prom Gabon</p>
-                <p><strong>Date de formation :</strong> [À compléter]</p>
-                <p><strong>Lieu :</strong> Site Maurel & Prom - Port-Gentil</p>
+                <p><strong>Dates de formation :</strong> 21-22 octobre 2025</p>
+                <p><strong>Lieu :</strong> Centre de formation CAROIL - Port-Gentil</p>
             </div>
         </div>
 
         <div class="content">
             <div class="intro">
-                <p><strong>Cher participant,</strong> Pour personnaliser cette formation et maximiser son impact sur votre travail quotidien, merci de compléter ce questionnaire. Vos réponses nous permettront d'adapter le contenu à vos besoins réels et de concentrer les ateliers pratiques sur vos cas d'usage concrets.</p>
+                <p><strong>Cher participant,</strong> Pour personnaliser cette formation et maximiser son impact sur votre travail quotidien, merci de compléter ce questionnaire avant le 17 octobre 2025. Vos réponses nous permettront d'adapter le contenu à vos besoins réels et de concentrer les ateliers pratiques sur vos cas d'usage concrets.</p>
             </div>
 
             <!-- Section 1 -->
@@ -407,11 +410,49 @@
                         <input type="text" placeholder="Ex: Direction Technique..." required>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label>Email professionnel *</label>
+                    <input type="email" placeholder="prenom.nom@maureletprom.ga" required>
+                </div>
+            </div>
+
+            <!-- Section Créneaux -->
+            <div class="section">
+                <h2 class="section-title">2. Choix de créneaux</h2>
+
+                <div class="form-group">
+                    <label>Sélectionnez vos créneaux disponibles *</label>
+                    <p class="help-text">📍 Centre de formation CAROIL | ⏰ 4h par session | 👥 15 participants max/session<br>
+                    Cochez un ou plusieurs créneaux selon vos disponibilités (par ordre de préférence)</p>
+
+                    <div class="checkbox-group">
+                        <div style="font-weight: 600; color: #0055A4; margin-bottom: 8px;">Mardi 21 octobre 2025</div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mar_matin" name="creneaux">
+                            <label for="mar_matin">Session 1 : 08h00 - 12h00</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mar_aprem" name="creneaux">
+                            <label for="mar_aprem">Session 2 : 14h00 - 18h00</label>
+                        </div>
+
+                        <div style="font-weight: 600; color: #0055A4; margin: 15px 0 8px 0;">Mercredi 22 octobre 2025</div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mer_matin" name="creneaux">
+                            <label for="mer_matin">Session 3 : 08h00 - 12h00</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="mer_aprem" name="creneaux">
+                            <label for="mer_aprem">Session 4 : 14h00 - 18h00</label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Section 2 -->
             <div class="section">
-                <h2 class="section-title">2. Votre expérience avec l'IA générative</h2>
+                <h2 class="section-title">3. Votre expérience avec l'IA générative</h2>
 
                 <div class="form-group">
                     <label>Quel est votre niveau actuel sur les outils d'IA générative ? *</label>
@@ -471,7 +512,7 @@
 
             <!-- Section 3 -->
             <div class="section">
-                <h2 class="section-title">3. Vos besoins professionnels</h2>
+                <h2 class="section-title">4. Vos besoins professionnels</h2>
 
                 <div class="form-group">
                     <label>Quelles tâches de votre quotidien professionnel aimeriez-vous simplifier grâce à l'IA ? *</label>
@@ -488,7 +529,7 @@
 
             <!-- Section 4 -->
             <div class="section">
-                <h2 class="section-title">4. Vos attentes pour cette formation</h2>
+                <h2 class="section-title">5. Vos attentes pour cette formation</h2>
 
                 <div class="form-group">
                     <label>Quels sont vos 2-3 principaux objectifs pour cette formation ? *</label>
@@ -504,7 +545,7 @@
 
             <!-- Section 5 -->
             <div class="section">
-                <h2 class="section-title">5. Contexte d'utilisation (optionnel)</h2>
+                <h2 class="section-title">6. Contexte d'utilisation (optionnel)</h2>
 
                 <div class="form-group">
                     <label>Y a-t-il des contraintes dans votre entreprise concernant l'utilisation de l'IA ?</label>
@@ -532,17 +573,19 @@
 
     <script>
         // ⚠️ IMPORTANT : Remplacez cette URL par votre URL Google Apps Script
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUmEAcKjBreRp4DsN92ETvJ-SFcH6R6PIoAzxkcQdAktJTnLx0IiwH0fVZNFOQljlK/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQJ1b-q0A7O_liHD6gLoGdDho8V0KDy8zqWqvaWBtIOtDofbH9D-EfTQhQE8WNWeE/exec';
 
         function submitForm() {
             // Validation basique
             const requiredInputs = document.querySelectorAll('input[required], textarea[required]');
             let allFilled = true;
+            let emptyFields = [];
 
             requiredInputs.forEach(input => {
                 if (!input.value.trim()) {
                     allFilled = false;
                     input.style.borderColor = '#EF4135';
+                    emptyFields.push(input.previousElementSibling?.textContent || 'Un champ');
                 }
             });
 
@@ -551,6 +594,14 @@
             if (!levelChecked) {
                 allFilled = false;
                 alert('Merci de sélectionner votre niveau d\'expérience avec l\'IA.');
+                return;
+            }
+
+            // Vérifier qu'au moins un créneau est sélectionné
+            const creneauChecked = document.querySelector('input[name="creneaux"]:checked');
+            if (!creneauChecked) {
+                allFilled = false;
+                alert('Merci de sélectionner au moins un créneau de formation.');
                 return;
             }
 
@@ -576,6 +627,10 @@
                 nom: document.querySelectorAll('input[type="text"]')[0].value,
                 poste: document.querySelectorAll('input[type="text"]')[1].value,
                 departement: document.querySelectorAll('input[type="text"]')[2].value,
+                email: document.querySelector('input[type="email"]').value,
+                creneaux: Array.from(document.querySelectorAll('input[name="creneaux"]:checked'))
+                    .map(cb => cb.nextElementSibling.textContent)
+                    .join(' | '),
                 niveau: document.querySelector('input[name="level"]:checked')?.nextElementSibling?.textContent || '',
                 frequence: document.querySelector('input[name="frequency"]:checked')?.nextElementSibling?.textContent || 'Non spécifié',
                 taches: document.querySelectorAll('textarea')[0].value,
@@ -617,7 +672,7 @@
         }
 
         // Effet de focus sur les champs
-        document.querySelectorAll('input[type="text"], textarea').forEach(input => {
+        document.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach(input => {
             input.addEventListener('input', function() {
                 if (this.style.borderColor === 'rgb(239, 65, 53)') {
                     this.style.borderColor = '#e0e0e0';
