@@ -601,56 +601,56 @@
         });
         
         function chargerDisponibilites() {
-            // Vérifier que l'URL est configurée
-            if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycby7x0TwHD3-kM-mJ8Yyh7NqiZkOF11432n88ksQgplyZeqPcT7wfevtkOpdwhIFke_H/exec') {
-                document.getElementById('loading-creneaux').innerHTML = 
-                    '⚠️ Configuration requise : L\'URL Google Apps Script n\'est pas encore configurée.';
-                return;
-            }
+    // Vérifier que l'URL est configurée
+    if (GOOGLE_SCRIPT_URL === 'REMPLACEZ_PAR_VOTRE_URL_GOOGLE_SCRIPT') {
+        document.getElementById('loading-creneaux').innerHTML = 
+            '⚠️ Configuration requise : L\'URL Google Apps Script n\'est pas encore configurée.';
+        return;
+    }
+    
+    // Appeler le script pour obtenir les disponibilités
+    fetch(GOOGLE_SCRIPT_URL)
+        .then(response => response.json())
+        .then(data => {
+            // Mettre à jour l'affichage des places restantes
+            const sessions = [
+                { id: 'mar_matin', key: 'session1', spanId: 'places-session1' },
+                { id: 'mar_aprem', key: 'session2', spanId: 'places-session2' },
+                { id: 'mer_matin', key: 'session3', spanId: 'places-session3' },
+                { id: 'mer_aprem', key: 'session4', spanId: 'places-session4' }
+            ];
             
-            // Appeler le script pour obtenir les disponibilités
-            fetch(GOOGLE_SCRIPT_URL)
-                .then(response => response.json())
-                .then(data => {
-                    // Mettre à jour l'affichage des places restantes
-                    const sessions = [
-                        { id: 'mar_matin', key: 'session1', spanId: 'places-session1' },
-                        { id: 'mar_aprem', key: 'session2', spanId: 'places-session2' },
-                        { id: 'mer_matin', key: 'session3', spanId: 'places-session3' },
-                        { id: 'mer_aprem', key: 'session4', spanId: 'places-session4' }
-                    ];
-                    
-                    sessions.forEach(session => {
-                        const checkbox = document.getElementById(session.id);
-                        const span = document.getElementById(session.spanId);
-                        const info = data[session.key];
-                        const item = document.getElementById('item-' + session.id);
-                        
-                        if (info.complet) {
-                            // Créneau complet - désactiver
-                            checkbox.disabled = true;
-                            item.style.opacity = '0.5';
-                            span.innerHTML = ' - <strong style="color: #EF4135;">COMPLET</strong>';
-                        } else {
-                            // Afficher les places restantes
-                            const couleur = info.places_restantes <= 3 ? '#f57c00' : '#28a745';
-                            span.innerHTML = ` - <strong style="color: ${couleur};">${info.places_restantes} places restantes</strong>`;
-                        }
-                    });
-                    
-                    // Ajouter le comportement "un seul choix" pour les créneaux disponibles
-                    ajouterComportementUnSeulChoix();
-                    
-                    // Masquer le message de chargement et afficher les créneaux
-                    document.getElementById('loading-creneaux').style.display = 'none';
-                    document.getElementById('creneaux-container').style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Erreur lors du chargement des disponibilités:', error);
-                    document.getElementById('loading-creneaux').innerHTML = 
-                        '⚠️ Impossible de charger les disponibilités. Veuillez rafraîchir la page.';
-                });
-        }
+            sessions.forEach(session => {
+                const checkbox = document.getElementById(session.id);
+                const span = document.getElementById(session.spanId);
+                const info = data[session.key];
+                const item = document.getElementById('item-' + session.id);
+                
+                if (info.complet) {
+                    // Créneau complet - désactiver
+                    checkbox.disabled = true;
+                    item.style.opacity = '0.5';
+                    span.innerHTML = ' - <strong style="color: #EF4135;">COMPLET</strong>';
+                } else {
+                    // Afficher les places restantes
+                    const couleur = info.places_restantes <= 3 ? '#f57c00' : '#28a745';
+                    span.innerHTML = ` - <strong style="color: ${couleur};">${info.places_restantes} places restantes</strong>`;
+                }
+            });
+            
+            // Ajouter le comportement "un seul choix" pour les créneaux disponibles
+            ajouterComportementUnSeulChoix();
+            
+            // Masquer le message de chargement et afficher les créneaux
+            document.getElementById('loading-creneaux').style.display = 'none';
+            document.getElementById('creneaux-container').style.display = 'block';
+        })
+        .catch(error => {
+            console.error('Erreur lors du chargement des disponibilités:', error);
+            document.getElementById('loading-creneaux').innerHTML = 
+                '⚠️ Impossible de charger les disponibilités. Veuillez rafraîchir la page.';
+        });
+}
         
         // Fonction pour gérer le comportement "un seul créneau à la fois"
         function ajouterComportementUnSeulChoix() {
