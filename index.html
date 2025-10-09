@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questionnaire Formation IA - Maurel & Prom Gabon</title>
-    <style> 
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -292,12 +292,75 @@
             .container {
                 box-shadow: none;
                 max-width: 100%;
+                page-break-after: auto;
+            }
+            .header {
+                padding: 22px 28px 18px;
+            }
+            .logo-text {
+                font-size: 40px;
+            }
+            .content {
+                padding: 22px 28px;
+            }
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 22px;
+            }
+            .form-group {
+                page-break-inside: avoid;
+                margin-bottom: 16px;
+            }
+            .checkbox-group {
+                page-break-inside: avoid;
+            }
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                border: 1px solid #ccc;
+                padding: 9px 11px;
+            }
+            textarea {
+                min-height: 70px;
+            }
+            .example-box {
+                page-break-inside: avoid;
+                padding: 10px 12px;
             }
             .submit-btn {
                 display: none;
             }
             .submit-section p {
                 display: none;
+            }
+            .footer {
+                padding: 14px 28px;
+            }
+            .intro {
+                padding: 14px;
+                margin-bottom: 18px;
+            }
+            .section-title {
+                font-size: 17px;
+                margin-bottom: 14px;
+            }
+            label {
+                font-size: 13px;
+                margin-bottom: 6px;
+            }
+            .help-text {
+                font-size: 11px;
+            }
+            .checkbox-item label {
+                font-size: 12px;
+            }
+            .two-columns {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            @page {
+                margin: 1.5cm;
+                size: A4;
             }
         }
     </style>
@@ -333,30 +396,30 @@
                 
                 <div class="form-group">
                     <label>Nom et Prénom *</label>
-                    <input type="text" id="nom" placeholder="Entrez votre nom complet" required>
+                    <input type="text" placeholder="Entrez votre nom complet" required>
                 </div>
                 
                 <div class="two-columns">
                     <div class="form-group">
                         <label>Fonction / Poste *</label>
-                        <input type="text" id="poste" placeholder="Ex: Responsable Exploration..." required>
+                        <input type="text" placeholder="Ex: Responsable Exploration..." required>
                     </div>
                     
                     <div class="form-group">
                         <label>Département / Service *</label>
-                        <input type="text" id="departement" placeholder="Ex: Direction Technique..." required>
+                        <input type="text" placeholder="Ex: Direction Technique..." required>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label>Email professionnel *</label>
-                    <input type="email" id="email" placeholder="prenom.nom@maureletprom.ga" required>
+                    <input type="email" placeholder="prenom.nom@maureletprom.ga" required>
                 </div>
             </div>
             
             <!-- Section Créneaux -->
             <div class="section">
-                <h2 class="section-title">2. Choix de créneau</h2>
+                <h2 class="section-title">2. Choix de créneaux</h2>
                 
                 <div class="form-group">
                     <label>Sélectionnez VOTRE créneau *</label>
@@ -370,14 +433,14 @@
                     <div class="checkbox-group" id="creneaux-container" style="display: none;">
                         <div style="font-weight: 600; color: #0055A4; margin-bottom: 8px;">Mardi 21 octobre 2025</div>
                         <div class="checkbox-item" id="item-mar_matin">
-                            <input type="checkbox" id="mar_matin" name="creneaux">
+                            <input type="checkbox" id="mar_matin" name="creneaux" value="Session 1 : 08h00 - 12h00">
                             <label for="mar_matin">
                                 Session 1 : 08h00 - 12h00
                                 <span id="places-session1" style="font-size: 12px; color: #666;"></span>
                             </label>
                         </div>
                         <div class="checkbox-item" id="item-mar_aprem">
-                            <input type="checkbox" id="mar_aprem" name="creneaux">
+                            <input type="checkbox" id="mar_aprem" name="creneaux" value="Session 2 : 14h00 - 18h00">
                             <label for="mar_aprem">
                                 Session 2 : 14h00 - 18h00
                                 <span id="places-session2" style="font-size: 12px; color: #666;"></span>
@@ -386,14 +449,14 @@
                         
                         <div style="font-weight: 600; color: #0055A4; margin: 15px 0 8px 0;">Mercredi 22 octobre 2025</div>
                         <div class="checkbox-item" id="item-mer_matin">
-                            <input type="checkbox" id="mer_matin" name="creneaux">
+                            <input type="checkbox" id="mer_matin" name="creneaux" value="Session 3 : 08h00 - 12h00">
                             <label for="mer_matin">
                                 Session 3 : 08h00 - 12h00
                                 <span id="places-session3" style="font-size: 12px; color: #666;"></span>
                             </label>
                         </div>
                         <div class="checkbox-item" id="item-mer_aprem">
-                            <input type="checkbox" id="mer_aprem" name="creneaux">
+                            <input type="checkbox" id="mer_aprem" name="creneaux" value="Session 4 : 14h00 - 18h00">
                             <label for="mer_aprem">
                                 Session 4 : 14h00 - 18h00
                                 <span id="places-session4" style="font-size: 12px; color: #666;"></span>
@@ -407,7 +470,7 @@
                 </div>
             </div>
             
-            <!-- Section 3 -->
+            <!-- Section 2 -->
             <div class="section">
                 <h2 class="section-title">3. Votre expérience avec l'IA générative</h2>
                 
@@ -417,23 +480,23 @@
                     
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="level1" name="level">
+                            <input type="checkbox" id="level1" name="level" value="Je n'ai jamais utilisé ces outils">
                             <label for="level1">Je n'ai jamais utilisé ces outils</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="level2" name="level">
+                            <input type="checkbox" id="level2" name="level" value="Débutant (j'ai essayé quelques fois, mais je ne suis pas à l'aise)">
                             <label for="level2">Débutant (j'ai essayé quelques fois, mais je ne suis pas à l'aise)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="level3" name="level">
+                            <input type="checkbox" id="level3" name="level" value="Intermédiaire (j'utilise régulièrement et je sais bien formuler mes demandes)">
                             <label for="level3">Intermédiaire (j'utilise régulièrement et je sais bien formuler mes demandes)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="level4" name="level">
+                            <input type="checkbox" id="level4" name="level" value="Avancé (je maîtrise les techniques de prompt avancées et/ou j'ai créé des GPTs personnalisés)">
                             <label for="level4">Avancé (je maîtrise les techniques de prompt avancées et/ou j'ai créé des GPTs personnalisés)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="level5" name="level">
+                            <input type="checkbox" id="level5" name="level" value="Expert (j'utilise les API, j'intègre l'IA dans des workflows automatisés)">
                             <label for="level5">Expert (j'utilise les API, j'intègre l'IA dans des workflows automatisés)</label>
                         </div>
                     </div>
@@ -444,30 +507,30 @@
                     
                     <div class="checkbox-group">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="freq1" name="frequency">
+                            <input type="checkbox" id="freq1" name="frequency" value="Jamais">
                             <label for="freq1">Jamais</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="freq2" name="frequency">
+                            <input type="checkbox" id="freq2" name="frequency" value="Rarement (moins d'une fois par mois)">
                             <label for="freq2">Rarement (moins d'une fois par mois)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="freq3" name="frequency">
+                            <input type="checkbox" id="freq3" name="frequency" value="Occasionnellement (quelques fois par mois)">
                             <label for="freq3">Occasionnellement (quelques fois par mois)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="freq4" name="frequency">
+                            <input type="checkbox" id="freq4" name="frequency" value="Régulièrement (plusieurs fois par semaine)">
                             <label for="freq4">Régulièrement (plusieurs fois par semaine)</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="freq5" name="frequency">
+                            <input type="checkbox" id="freq5" name="frequency" value="Quotidiennement">
                             <label for="freq5">Quotidiennement</label>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Section 4 -->
+            <!-- Section 3 -->
             <div class="section">
                 <h2 class="section-title">4. Vos besoins professionnels</h2>
                 
@@ -480,11 +543,11 @@
                         <p>Rédaction d'emails • Analyse de rapports géologiques • Synthèse de comptes-rendus • Veille technique et réglementaire • Création de présentations • Analyse de données Excel • Rapports d'activité • Traduction de documents • Gestion documentaire...</p>
                     </div>
                     
-                    <textarea id="taches" placeholder="Décrivez en détail les tâches que vous aimeriez améliorer..." required></textarea>
+                    <textarea placeholder="Décrivez en détail les tâches que vous aimeriez améliorer..." required></textarea>
                 </div>
             </div>
             
-            <!-- Section 5 -->
+            <!-- Section 4 -->
             <div class="section">
                 <h2 class="section-title">5. Vos attentes pour cette formation</h2>
                 
@@ -496,11 +559,11 @@
                         <p>Gagner du temps sur mes tâches quotidiennes • Améliorer la qualité de mes livrables • Découvrir de nouveaux cas d'usage • Maîtriser le prompting avancé • Comprendre les risques et limites • Devenir autonome dans l'utilisation...</p>
                     </div>
                     
-                    <textarea id="objectifs" placeholder="Listez vos 2-3 principaux objectifs pour cette formation..." required></textarea>
+                    <textarea placeholder="Listez vos 2-3 principaux objectifs pour cette formation..." required></textarea>
                 </div>
             </div>
             
-            <!-- Section 6 -->
+            <!-- Section 5 -->
             <div class="section">
                 <h2 class="section-title">6. Contexte d'utilisation (optionnel)</h2>
                 
@@ -508,7 +571,7 @@
                     <label>Y a-t-il des contraintes dans votre entreprise concernant l'utilisation de l'IA ?</label>
                     <p class="help-text">Ex: confidentialité des données sensibles, outils déjà déployés, restrictions d'usage...</p>
                     
-                    <textarea id="contraintes" placeholder="Partagez toute information utile pour adapter la formation..."></textarea>
+                    <textarea placeholder="Partagez toute information utile pour adapter la formation..."></textarea>
                 </div>
             </div>
             
@@ -529,57 +592,75 @@
     </div>
     
     <script>
+        // ⚠️ IMPORTANT : Vérifiez que cette URL correspond à votre déploiement Google Apps Script
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7x0TwHD3-kM-mJ8Yyh7NqiZkOF11432n88ksQgplyZeqPcT7wfevtkOpdwhIFke_H/exec';
         
+        // Charger les disponibilités des créneaux au chargement de la page
         window.addEventListener('DOMContentLoaded', function() {
             chargerDisponibilites();
         });
         
         function chargerDisponibilites() {
-            if (GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycby7x0TwHD3-kM-mJ8Yyh7NqiZkOF11432n88ksQgplyZeqPcT7wfevtkOpdwhIFke_H/exec') {
+            // Vérifier que l'URL est définie
+            if (!GOOGLE_SCRIPT_URL) {
                 document.getElementById('loading-creneaux').innerHTML = 
-                    '⚠️ Configuration requise : L\'URL Google Apps Script n\'est pas encore configurée.';
+                    '⚠️ Erreur : L\'URL Google Apps Script n\'est pas définie.';
                 return;
             }
-            
-            fetch(GOOGLE_SCRIPT_URL)
-                .then(response => response.json())
-                .then(data => {
-                    const sessions = [
-                        { id: 'mar_matin', key: 'session1', spanId: 'places-session1' },
-                        { id: 'mar_aprem', key: 'session2', spanId: 'places-session2' },
-                        { id: 'mer_matin', key: 'session3', spanId: 'places-session3' },
-                        { id: 'mer_aprem', key: 'session4', spanId: 'places-session4' }
-                    ];
+    
+            // Appeler le script pour obtenir les disponibilités
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP : ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Mettre à jour l'affichage des places restantes
+                const sessions = [
+                    { id: 'mar_matin', key: 'session1', spanId: 'places-session1' },
+                    { id: 'mar_aprem', key: 'session2', spanId: 'places-session2' },
+                    { id: 'mer_matin', key: 'session3', spanId: 'places-session3' },
+                    { id: 'mer_aprem', key: 'session4', spanId: 'places-session4' }
+                ];
+                
+                sessions.forEach(session => {
+                    const checkbox = document.getElementById(session.id);
+                    const span = document.getElementById(session.spanId);
+                    const info = data[session.key];
+                    const item = document.getElementById('item-' + session.id);
                     
-                    sessions.forEach(session => {
-                        const checkbox = document.getElementById(session.id);
-                        const span = document.getElementById(session.spanId);
-                        const info = data[session.key];
-                        const item = document.getElementById('item-' + session.id);
-                        
-                        if (info.complet) {
-                            checkbox.disabled = true;
-                            item.style.opacity = '0.5';
-                            span.innerHTML = ' - <strong style="color: #EF4135;">COMPLET</strong>';
-                        } else {
-                            const couleur = info.places_restantes <= 3 ? '#f57c00' : '#28a745';
-                            span.innerHTML = ` - <strong style="color: ${couleur};">${info.places_restantes} places restantes</strong>`;
-                        }
-                    });
-                    
-                    ajouterComportementUnSeulChoix();
-                    
-                    document.getElementById('loading-creneaux').style.display = 'none';
-                    document.getElementById('creneaux-container').style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Erreur:', error);
-                    document.getElementById('loading-creneaux').innerHTML = 
-                        '⚠️ Impossible de charger les disponibilités. Veuillez rafraîchir la page.';
+                    if (info.complet) {
+                        checkbox.disabled = true;
+                        item.style.opacity = '0.5';
+                        span.innerHTML = ' - <strong style="color: #EF4135;">COMPLET</strong>';
+                    } else {
+                        const couleur = info.places_restantes <= 3 ? '#f57c00' : '#28a745';
+                        span.innerHTML = ` - <strong style="color: ${couleur};">${info.places_restantes} places restantes</strong>`;
+                    }
                 });
+                
+                // Ajouter le comportement "un seul choix" pour les créneaux disponibles
+                ajouterComportementUnSeulChoix();
+                
+                // Masquer le message de chargement et afficher les créneaux
+                document.getElementById('loading-creneaux').style.display = 'none';
+                document.getElementById('creneaux-container').style.display = 'block';
+            })
+            .catch(error => {
+                console.error('Erreur lors du chargement des disponibilités:', error);
+                document.getElementById('loading-creneaux').innerHTML = 
+                    `⚠️ Erreur : Impossible de charger les disponibilités (${error.message}). Veuillez réessayer.`;
+            });
         }
         
+        // Fonction pour gérer le comportement "un seul créneau à la fois"
         function ajouterComportementUnSeulChoix() {
             const checkboxes = document.querySelectorAll('input[name="creneaux"]:not([disabled])');
             
@@ -624,16 +705,22 @@
         }
         
         function submitForm() {
+            // Validation basique
             const requiredInputs = document.querySelectorAll('input[required], textarea[required]');
             let allFilled = true;
+            let emptyFields = [];
             
             requiredInputs.forEach(input => {
                 if (!input.value.trim()) {
                     allFilled = false;
                     input.style.borderColor = '#EF4135';
+                    emptyFields.push(input.previousElementSibling?.textContent || 'Un champ');
+                } else {
+                    input.style.borderColor = '#e0e0e0';
                 }
             });
             
+            // Vérifier qu'au moins un niveau est sélectionné
             const levelChecked = document.querySelector('input[name="level"]:checked');
             if (!levelChecked) {
                 allFilled = false;
@@ -641,65 +728,76 @@
                 return;
             }
             
+            // Vérifier qu'au moins un créneau est sélectionné
             const creneauChecked = document.querySelector('input[name="creneaux"]:checked');
             if (!creneauChecked) {
                 allFilled = false;
-                alert('Merci de sélectionner un créneau de formation.');
+                alert('Merci de sélectionner au moins un créneau de formation.');
                 return;
             }
             
             if (!allFilled) {
-                alert('Merci de remplir tous les champs obligatoires (*)');
+                alert('Merci de remplir tous les champs obligatoires (*) : ' + emptyFields.join(', '));
                 return;
             }
             
+            // Désactiver le bouton pendant l'envoi
             const btn = document.querySelector('.submit-btn');
             btn.textContent = 'Envoi en cours...';
             btn.disabled = true;
             
+            // Collecter les données du formulaire
             const formData = {
                 timestamp: new Date().toISOString(),
-                nom: document.getElementById('nom').value,
-                poste: document.getElementById('poste').value,
-                departement: document.getElementById('departement').value,
-                email: document.getElementById('email').value,
-                creneaux: creneauChecked.nextElementSibling.textContent.trim(),
-                niveau: levelChecked.nextElementSibling.textContent,
-                frequence: document.querySelector('input[name="frequency"]:checked')?.nextElementSibling?.textContent || 'Non spécifié',
-                taches: document.getElementById('taches').value,
-                objectifs: document.getElementById('objectifs').value,
-                contraintes: document.getElementById('contraintes').value || 'Aucune contrainte mentionnée'
+                nom: document.querySelectorAll('input[type="text"]')[0].value,
+                poste: document.querySelectorAll('input[type="text"]')[1].value,
+                departement: document.querySelectorAll('input[type="text"]')[2].value,
+                email: document.querySelector('input[type="email"]').value,
+                creneaux: document.querySelector('input[name="creneaux"]:checked').value,
+                niveau: document.querySelector('input[name="level"]:checked').value,
+                frequence: document.querySelector('input[name="frequency"]:checked')?.value || 'Non spécifié',
+                taches: document.querySelectorAll('textarea')[0].value,
+                objectifs: document.querySelectorAll('textarea')[1].value,
+                contraintes: document.querySelectorAll('textarea')[2]?.value || 'Aucune contrainte mentionnée'
             };
             
+            // Envoyer à Google Sheets
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(formData)
             })
-            .then(() => {
-                alert('✅ Merci pour vos réponses !\n\nVotre questionnaire a été enregistré avec succès.\n\nVos réponses nous permettront de personnaliser la formation selon vos besoins.');
-                
-                btn.textContent = '✓ Envoyé avec succès !';
-                btn.style.background = '#28a745';
-                
-                setTimeout(() => {
-                    if (confirm('Voulez-vous soumettre une autre réponse ?')) {
-                        location.reload();
-                    }
-                }, 3000);
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP : ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.result === 'success') {
+                    alert('✅ Merci pour vos réponses !\n\nVotre questionnaire a été enregistré avec succès.\n\nVos réponses nous permettront de personnaliser la formation selon vos besoins.');
+                    btn.textContent = '✓ Envoyé avec succès !';
+                    btn.style.background = '#28a745';
+                    setTimeout(() => {
+                        if (confirm('Voulez-vous soumettre une autre réponse ?')) {
+                            location.reload();
+                        }
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Erreur inconnue lors de l\'envoi.');
+                }
             })
             .catch(error => {
                 console.error('Erreur:', error);
-                alert('❌ Erreur lors de l\'envoi.\n\nVeuillez vérifier votre connexion internet et réessayer.');
-                
+                alert(`❌ Erreur lors de l'envoi : ${error.message}\n\nVeuillez vérifier votre connexion internet et réessayer.`);
                 btn.textContent = 'Envoyer mes réponses';
                 btn.disabled = false;
             });
         }
         
+        // Effet de focus sur les champs
         document.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach(input => {
             input.addEventListener('input', function() {
                 if (this.style.borderColor === 'rgb(239, 65, 53)') {
@@ -708,6 +806,7 @@
             });
         });
         
+        // Radio-like behavior pour les checkboxes de niveau
         document.querySelectorAll('input[name="level"]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
@@ -718,6 +817,7 @@
             });
         });
         
+        // Radio-like behavior pour les checkboxes de fréquence
         document.querySelectorAll('input[name="frequency"]').forEach(checkbox => {
             checkbox.addEventListener('change', function() {
                 if (this.checked) {
@@ -730,4 +830,3 @@
     </script>
 </body>
 </html>
- 
